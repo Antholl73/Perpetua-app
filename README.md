@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-blue" alt="Platform">
   <img src="https://img.shields.io/badge/Rust-2021%20Stable-orange" alt="Rust">
   <img src="https://img.shields.io/badge/Tauri-v2-24c8db" alt="Tauri">
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+  <img src="https://img.shields.io/badge/License-GPL--3.0-blue" alt="License">
 </p>
 
 ---
@@ -206,4 +206,4 @@ Perpetua-app/
 
 ## 📄 Licencia
 
-Este proyecto se distribuye bajo la licencia **MIT**. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto se distribuye bajo la licencia **GNU General Public License v3.0 (GPL-3.0)**. Consulta el archivo [`LICENSE`](LICENSE) para más detalles.
