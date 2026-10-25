@@ -1,0 +1,81 @@
+name: Release Perpetua (Linux & Windows)
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release-perpetua:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: ubuntu-latest
+            args: '--bundles deb,appimage'
+          - platform: windows-latest
+            args: '--bundles nsis'
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Linux system dependencies (WebKit2GTK 4.1 & ALSA)
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libasound2-dev \
+            build-essential \
+            curl \
+            wget \
+            file \
+            libxdo-dev \
+            libssl-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: ui/package-lock.json
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust Cache (Swatinem/rust-cache)
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: '. -> target'
+
+      - name: Install Frontend Dependencies & Build UI
+        run: |
+          npm --prefix ui ci
+          npm --prefix ui run build
+
+      - name: Build Perpetua Tauri v2 Bundles & Publish GitHub Release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: crates/perpetua-desktop
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Perpetua ${{ github.ref_name }}'
+          releaseBody: |
+            ## Perpetua ${{ github.ref_name }} — Broadcast Automation Console
+            ### Instaladores Oficiales
+            - **Windows (x64)**: Instalador ligero NSIS (`.exe`)
+            - **Linux (x64)**: Paquete Debian/Ubuntu (`.deb`) y ejecutable portable (`.AppImage`)
+          releaseDraft: false
+          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'rc') }}
+          args: ${{ matrix.args }}

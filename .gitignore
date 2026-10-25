@@ -1,0 +1,32 @@
+# Rust / Cargo
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Node / UI
+node_modules/
+/ui/node_modules/
+/ui/dist/
+
+# Archivos locales de sesión de Perpetua
+.perpetua_last_session.json
+.perpetua_events.json
+.perpetua_metadata.db
+.perpetua_metadata.db-journal
+.zara_last_session.json
+.zara_events.json
+.zara_metadata.db
+.zara_metadata.db-journal
+
+# Tauri build artifacts
+/crates/perpetua-desktop/target/
+/crates/perpetua-desktop/gen/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.exe
+

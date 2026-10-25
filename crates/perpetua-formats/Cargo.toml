@@ -1,0 +1,14 @@
+[package]
+name = "perpetua-formats"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Parsers y serializadores de formatos de radiodifusión de Perpetua (.lst, .evt EVT01-03, .rot, .seq, .zsd, .zsl/sweepers.db, .m3u, .pls)"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+rusqlite.workspace = true
+uuid.workspace = true

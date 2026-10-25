@@ -1,0 +1,19 @@
+[package]
+name = "perpetua-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Lógica central de automatización de Perpetua: Secuenciador, GestionEventos, AntiRepeatPool, Locuciones y Auditoría"
+
+[dependencies]
+perpetua-formats = { path = "../perpetua-formats" }
+perpetua-audio = { path = "../perpetua-audio" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+rand.workspace = true
+notify.workspace = true
+uuid.workspace = true
+tracing.workspace = true
+rusqlite.workspace = true

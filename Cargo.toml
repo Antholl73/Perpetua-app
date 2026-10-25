@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/perpetua-formats",
+    "crates/perpetua-audio",
+    "crates/perpetua-core",
+    "crates/perpetua-server",
+    "crates/perpetua-desktop",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Perpetua Broadcast Automation"]
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+chrono = { version = "0.4", features = ["serde"] }
+tokio = { version = "1.42", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+rand = "0.8"
+notify = "7.0"
+cpal = "0.15"
+symphonia = { version = "0.5", features = ["all"] }
+rustfft = "6.2"
+axum = { version = "0.7", features = ["ws", "macros"] }
+tower-http = { version = "0.6", features = ["cors", "fs"] }
+uuid = { version = "1.11", features = ["v4", "serde"] }

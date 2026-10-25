@@ -1,0 +1,19 @@
+[package]
+name = "perpetua-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Servidor API REST + WebSocket y demonio Headless para Perpetua"
+
+[dependencies]
+perpetua-core = { path = "../perpetua-core" }
+perpetua-formats = { path = "../perpetua-formats" }
+perpetua-audio = { path = "../perpetua-audio" }
+axum.workspace = true
+tokio.workspace = true
+tower-http.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true

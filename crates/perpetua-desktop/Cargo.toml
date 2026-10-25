@@ -1,0 +1,22 @@
+[package]
+name = "perpetua-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Perpetua — Aplicación de escritorio de automatización radial (Tauri v2)"
+default-run = "perpetua"
+
+[[bin]]
+name = "perpetua"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+perpetua-core = { path = "../perpetua-core" }
+perpetua-audio = { path = "../perpetua-audio" }
+tauri = { version = "2", features = ["custom-protocol"] }
+tauri-plugin-dialog = "2"
+serde.workspace = true
+serde_json.workspace = true

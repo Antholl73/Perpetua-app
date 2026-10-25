@@ -1,0 +1,15 @@
+[package]
+name = "perpetua-audio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Motor de audio multitarjeta, Fader, Compresor/AGC DSP, detector de silencio y decodificador DTMF por FFT"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+cpal.workspace = true
+symphonia.workspace = true
+rustfft.workspace = true
+tracing.workspace = true
