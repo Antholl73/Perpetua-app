@@ -6,7 +6,7 @@
   "identifier": "com.perpetua.broadcast",
   "build": {
     "beforeDevCommand": "npm --prefix ../../ui run dev",
-    "beforeBuildCommand": "npm --prefix ../../ui run build",
+    "beforeBuildCommand": "",
     "frontendDist": "../../ui/dist"
   },
   "app": {
